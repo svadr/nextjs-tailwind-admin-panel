@@ -4,7 +4,6 @@ export const userService = {
 
 function authenticate(username: string, password: string) {
 	if (username !== "admin" || password !== "admin") {
-		console.log('is null')
 		return null;
 	}
 

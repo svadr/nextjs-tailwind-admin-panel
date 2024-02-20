@@ -7,6 +7,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Avatar } from "@nextui-org/react";
+import { signOut } from "next-auth/react";
 
 interface TopbarProps {
 	toggleSidebar: () => void;
@@ -17,6 +18,15 @@ export default function Topbar({ toggleSidebar }: TopbarProps) {
 	const toggleProfileInfo = () => setIsProfileInfoOpen(!isProfileInfoOpen);
 	const componentRef = useRef<HTMLDivElement>(null);
 
+	
+	useEffect(() => {
+		document.addEventListener("click", handleClickOutside);
+		
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, []);
+	
 	const handleClickOutside = (event: MouseEvent) => {
 		if (
 			componentRef.current &&
@@ -26,13 +36,9 @@ export default function Topbar({ toggleSidebar }: TopbarProps) {
 		}
 	};
 
-	useEffect(() => {
-		document.addEventListener("click", handleClickOutside);
-
-		return () => {
-			document.removeEventListener("click", handleClickOutside);
-		};
-	}, []);
+	const handleSignOut = () => {
+		signOut()
+	}
 
 	return (
 		<div className="sticky top-0 flex justify-between bg-sky-950 px-5 py-3 text-stone-50">
@@ -77,7 +83,7 @@ export default function Topbar({ toggleSidebar }: TopbarProps) {
 							>
 								Perfil
 							</Link>
-							<div className="cursor-pointer hover:text-red-400">
+							<div className="cursor-pointer hover:text-red-400" onClick={handleSignOut}>
 								Cerrar sesión
 							</div>
 						</div>

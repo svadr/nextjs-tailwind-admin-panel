@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { SidebarMenuProps } from "@/app/lib";
+import { SidebarMenuProps } from "@/app/types";
 import SidebarMenuOption from "./sidebar-menu-option";
 import LinkOrMenu from "./link-or-menu";
 

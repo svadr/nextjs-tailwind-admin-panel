@@ -7,23 +7,23 @@ import Topbar from "../topbar";
 interface MainContainerProps {
 	children: React.ReactNode;
 }
-export default function MainContainer({ children }: MainContainerProps) {
+export default async function MainContainer({ children }: MainContainerProps) {
 	const [isOpenSidebar, setIsOpenSidebar] = useState(true);
 	const toggleSidebar = () => setIsOpenSidebar(!isOpenSidebar);
-
+	
 	return (
-		<div className="flex h-screen font-sans">
+		<main className="flex h-screen font-sans">
 			{isOpenSidebar ? (
 				<div className="w-80">
 					<Sidebar />
 				</div>
 			) : null}
 			<div className="w-full">
-				<main className="h-full overflow-y-auto overflow-x-hidden">
+				<div className="h-full overflow-y-auto overflow-x-hidden">
 					<Topbar toggleSidebar={toggleSidebar} />
 					{children}
-				</main>
+				</div>
 			</div>
-		</div>
+		</main>
 	);
 }

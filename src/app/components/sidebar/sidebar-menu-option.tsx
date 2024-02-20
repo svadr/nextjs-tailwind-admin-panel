@@ -1,4 +1,4 @@
-import { SidebarMenuOptionsProps } from "@/app/lib";
+import { SidebarMenuOptionsProps } from "@/app/types";
 import Link from "next/link";
 
 export default function SidebarMenuOption({text, link}: SidebarMenuOptionsProps) {

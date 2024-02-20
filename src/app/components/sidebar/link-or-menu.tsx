@@ -1,4 +1,4 @@
-import { LinkOrMenuProps } from "@/app/lib";
+import { LinkOrMenuProps } from "@/app/types";
 import Link from "next/link";
 
 export default function LinkOrMenu({

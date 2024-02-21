@@ -29,7 +29,8 @@ export default function LoginPage({searchParams}: PageProps) {
   }
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-col gap-10 bg-stone-50 py-40">
+        <div className="flex justify-center self-center text-lg">Logo</div>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -79,7 +80,7 @@ export default function LoginPage({searchParams}: PageProps) {
               </button>
             </div>
             { searchParams.error && (
-              <p className="text-red-600 text-center capitalize">
+              <p className="text-center capitalize text-red-600">
                 Login failed.
               </p>
             )}

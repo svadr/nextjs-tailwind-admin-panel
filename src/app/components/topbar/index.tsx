@@ -36,8 +36,8 @@ export default function Topbar({ toggleSidebar }: TopbarProps) {
 		}
 	};
 
-	const handleSignOut = () => {
-		signOut()
+	const handleSignOut = async () => {
+		await signOut()
 	}
 
 	return (

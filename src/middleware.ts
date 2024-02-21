@@ -11,19 +11,22 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
 
 	// @ts-ignore
 	const session = await getSession({ req: requestForNextAuth });
+	const url = req.nextUrl.clone();
 
 	if (session) {
+		if (url.pathname === "/login") {
+			url.pathname = "/";
+			return NextResponse.redirect(url);
+		}
 		return NextResponse.next();
 	}
-
-	const url = req.nextUrl.clone();
 
 	if (url.pathname === "/login") {
 		return NextResponse.next();
 	}
 
 	url.pathname = "/login";
-    
+
 	return NextResponse.redirect(url);
 }
 

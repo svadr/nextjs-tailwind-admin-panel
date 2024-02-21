@@ -7,7 +7,7 @@ import Topbar from "../topbar";
 interface MainContainerProps {
 	children: React.ReactNode;
 }
-export default async function MainContainer({ children }: MainContainerProps) {
+export default function MainContainer({ children }: MainContainerProps) {
 	const [isOpenSidebar, setIsOpenSidebar] = useState(true);
 	const toggleSidebar = () => setIsOpenSidebar(!isOpenSidebar);
 	

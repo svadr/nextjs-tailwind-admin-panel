@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import MainContainer from "./components/main-container";
 import { getServerAuthSession } from "@/server/auth";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -21,11 +23,13 @@ export default async function RootLayout({
 		<html lang="en">
 			<body>
 				<Providers>
-					{authSession?.user ? (
-						<MainContainer>{children}</MainContainer>
-					) : (
-						children
-					)}
+					<Suspense fallback={<Loading />}>
+						{authSession?.user ? (
+							<MainContainer>{children}</MainContainer>
+						) : (
+							children
+						)}
+					</Suspense>
 				</Providers>
 			</body>
 		</html>
